@@ -1,0 +1,11 @@
+{
+   "content_scripts": [ {
+      "all_frames": false,
+      "js": [ "jquery-1.6.3.min.js", "rdio-extension.js" ],
+      "matches": [ "http://www.rdio.com/*" ],
+      "run_at": "document_end"
+   } ],
+   "description": "Hack Rdio",
+   "name": "Rdio Hacks",
+   "version": "0.1"
+}
