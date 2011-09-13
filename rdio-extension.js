@@ -2,7 +2,7 @@ function toCode(f) {
     return "(" + f.toString() + ")();";
 }
 
-function g() {
+function injectedJs() {
     jQuery.fn.origAutoSuspenders = jQuery.fn.autoSuspenders;
     jQuery.fn.autoSuspenders = function(j, v) {
 	var result = jQuery.fn.origAutoSuspenders.call(this, j, v);
@@ -20,5 +20,5 @@ function g() {
 
 var script = document.createElement("script");
 script.type = "text/javascript";
-script.text = toCode(g);
+script.text = toCode(injectedJs);
 document.body.appendChild(script);
