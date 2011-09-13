@@ -12,16 +12,10 @@ function g() {
                            },
 			   action: function() {
 			       R.Playlists.showAddToPlaylistDialog(j);
+			       return false;
 			   }});
 	return result;
     }
-
-    jQuery.fn.origSuspenders = jQuery.fn.suspenders;
-    jQuery.fn.suspenders = function(f) {
-	var result = jQuery.fn.origSuspenders.call(this, f);
-	return result;
-    };
-    jQuery.fn.suspenders.defaults = jQuery.fn.origSuspenders.defaults;
 }
 
 var script = document.createElement("script");
