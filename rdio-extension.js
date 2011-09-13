@@ -3,20 +3,26 @@ function toCode(f) {
 }
 
 function g() {
-    jQuery.fn.g = jQuery.fn.suspenders;
+    jQuery.fn.origAutoSuspenders = jQuery.fn.autoSuspenders;
+    jQuery.fn.autoSuspenders = function(j, v) {
+	var result = jQuery.fn.origAutoSuspenders.call(this, j, v);
+	v.menu_items.push({title: "Own menu item",
+			   visible: function() {
+			       return true;
+                           },
+			   action: function() {
+			       R.Playlists.showAddToPlaylistDialog(j);
+			   }});
+	return result;
+    }
+
+    jQuery.fn.origSuspenders = jQuery.fn.suspenders;
     jQuery.fn.suspenders = function(f) {
-	console.log(f);
-	if (f.menu_items != undefined) {
-	    f.menu_items.push(f.menu_items[2]);
-	}
-	var result = jQuery.fn.g.call(this, f);
-	console.log("result", result);
+	var result = jQuery.fn.origSuspenders.call(this, f);
 	return result;
     };
-    jQuery.fn.suspenders.defaults = jQuery.fn.g.defaults;
+    jQuery.fn.suspenders.defaults = jQuery.fn.origSuspenders.defaults;
 }
-
-console.log("code", toCode(f));
 
 var script = document.createElement("script");
 script.type = "text/javascript";
