@@ -1,5 +1,17 @@
-function toCode(f) {
-    return "(" + f.toString() + ")();";
+var debug = false;
+function log() {
+    if (debug) {
+	console.log.apply(console, arguments);
+    }
+}
+
+function codeToString(f) {
+    args = [];
+    log(arguments);
+    for (var i = 1; i < arguments.length; ++i) {
+	args.push(JSON.stringify(arguments[i]));
+    }
+    return "(" + f.toString() + ")(" + args.join(",") + ");";
 }
 
 function injectedJs() {
@@ -20,5 +32,5 @@ function injectedJs() {
 
 var script = document.createElement("script");
 script.type = "text/javascript";
-script.text = toCode(injectedJs);
+script.text = codeToString(injectedJs);
 document.body.appendChild(script);
