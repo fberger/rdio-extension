@@ -5,7 +5,7 @@
       "matches": [ "http://www.rdio.com/*" ],
       "run_at": "document_end"
    } ],
-   "description": "Hack Rdio",
-   "name": "Rdio Hacks",
+   "description": "Rdio Extension",
+   "name": "Rdio Extension",
    "version": "0.1"
 }
