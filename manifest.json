@@ -1,7 +1,7 @@
 {
    "content_scripts": [ {
       "all_frames": false,
-      "js": [ "jquery-1.6.3.min.js", "rdio-extension.js" ],
+      "js": [ "rdio-extension.js" ],
       "matches": [ "http://www.rdio.com/*" ],
       "run_at": "document_end"
    } ],
