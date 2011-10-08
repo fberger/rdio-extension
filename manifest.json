@@ -5,7 +5,7 @@
       "matches": [ "http://www.rdio.com/*" ],
       "run_at": "document_end"
    } ],
-   "description": "Rdio Extension",
+   "description": "Adds nice features to rdio.",
    "name": "Rdio Extension",
    "version": "1"
 }
