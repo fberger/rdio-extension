@@ -8,9 +8,9 @@
    } ],
    "description": "Adds nice features to rdio.",
    "name": "Rdio Extension",
-   "version": "2"
    "icons": {
    		"48": "icon_48.png",
    		"128": "icon_128.png"
    }
+   "version": "2",
 }
