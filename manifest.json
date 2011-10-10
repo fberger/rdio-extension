@@ -1,4 +1,5 @@
 {
+   "background_page": "bg.html",
    "content_scripts": [ {
       "all_frames": false,
       "js": [ "rdio-extension.js" ],

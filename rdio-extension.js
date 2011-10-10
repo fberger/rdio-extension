@@ -5,6 +5,20 @@ function log() {
     }
 }
 
+function track(args) {
+    chrome.extension.sendRequest({type: "track", data: args});
+}
+
+document.head.addEventListener('DOMNodeInserted', function(event) {
+    if (event.target && event.target.text
+	&& event.target.text == 'var track = "add-album-to-playlist";') {
+	track(['_trackEvent', 'usage', 'menu', 
+	       'add-album-to-playlist']);
+    }
+});
+
+track(["_trackPageview", "/rdio-extension.js"]);
+
 function codeToString(f) {
     args = [];
     log(arguments);
@@ -15,6 +29,12 @@ function codeToString(f) {
 }
 
 function injectedJs() {
+    function track(event) {
+	var script = document.createElement("script");
+	script.type = "text/javascript";
+	script.text = 'var track = "' + event + '";';
+	document.head.appendChild(script);
+    }
     jQuery.fn.origAutoSuspenders = jQuery.fn.autoSuspenders;
     jQuery.fn.autoSuspenders = function(data, item) {
 	jQuery.fn.currentData = data;
@@ -35,6 +55,7 @@ function injectedJs() {
 					var copy = jQuery.extend(true, {}, data);
 					copy.key = data.trackKeys;
 					R.Playlists.showAddToPlaylistDialog(copy);
+					track('add-album-to-playlist');
 					return false;
 				    }});
 	}
