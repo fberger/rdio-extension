@@ -65,14 +65,11 @@ function injectedJs() {
     R.Api.origRequest = R.Api.request;
     R.Api.request = function() {
 	var args = arguments[0];
-	if (args.method == 'addToPlaylist') {
+	if (args.method == 'addToPlaylist' || args.method == 'createPlaylist') {
 	    var tracks = args.content.tracks;
 	    if (tracks.length == 1 && tracks[0] instanceof Array) {
-		R.Api.request({method: "addToPlaylist", 
-			       content: { playlist: args.content.playlist, 
-					  tracks: tracks[0] }, 
-			       success: function() { 
-			       }});
+		args.content.tracks = args.content.tracks[0];
+		R.Api.request(args);
 		return;
 	    }
 	}
