@@ -1,3 +1,9 @@
+Official Download
+=================
+
+https://chrome.google.com/webstore/detail/jdheiaegecgkaoggmhfcnehdjmdfeeia
+
+
 Current Features
 ================
 
